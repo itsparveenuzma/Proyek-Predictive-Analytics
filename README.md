@@ -30,18 +30,15 @@ Tujuan dari proyek ini adalah:
 - Menganalisis data dengan melakukan univariate dan multivariate analysis. Pemahaman terhadap distribusi data juga didukung dengan visualisasi untuk mengetahui korelasi antar fitur dan mendeteksi outlier.
 - Melakukan proses data cleaning dan normalisasi agar data siap digunakan oleh algoritma machine learning untuk menghasilkan prediksi yang optimal.
 - Membangun dan membandingkan beberapa variasi model machine learning untuk menentukan model terbaik dalam memprediksi kualitas pisang. Model-model yang digunakan antara lain:
-    * K-Nearest Neighbor (KNN) adalah algoritma sederhana yang mengklasifikasikan data baru berdasarkan kesamaan dengan data terdekat. Algoritma ini sering digunakan sebagai baseline dalam klasifikasi karena kemudahan implementasi dan interpretasi.[[4]()]
-    * Random Forest merupakan algoritma ensemble yang terdiri dari banyak decision tree. Setiap pohon memberikan prediksi, dan hasil akhir didapat dari mayoritas voting. Metode ini efektif dalam meningkatkan akurasi dan mengurangi risiko overfitting.[[5]()]
-    * Support Vector Machine (SVM) bekerja dengan menemukan hyperplane terbaik yang memisahkan dua kelas dalam ruang berdimensi tinggi. SVM efektif untuk kasus klasifikasi biner dengan margin antar kelas yang jelas.[[6]()]
-    * Naive Bayes adalah algoritma klasifikasi probabilistik berbasis teorema Bayes. Meskipun sederhana, algoritma ini sering memberikan performa kompetitif pada dataset dengan distribusi normal.[[7]()]
-
-Extra Trees Classifier adalah algoritma berbasis ensemble yang mirip dengan Random Forest, namun melakukan pemilihan split secara lebih acak. Algoritma ini dapat mempercepat proses pelatihan dan sering memberikan akurasi tinggi.
-[8]
+    * K-Nearest Neighbor (KNN) adalah algoritma klasifikasi berbasis instance-based learning yang menentukan kelas suatu data baru berdasarkan mayoritas kelas dari sejumlah tetangga terdekatnya dalam ruang fitur.[[4](https://doi.org/10.57152/malcom.v4i2.1201)]
+    * Random Forest merupakan algoritma ensemble yang menggabungkan beberapa decision tree untuk meningkatkan akurasi dan mengurangi overfitting. Setiap pohon dalam hutan memberikan suara, dan kelas yang mendapatkan suara terbanyak menjadi prediksi akhir.[[5](https://algorit.ma/blog/cara-kerja-algoritma-random-forest-2022/)]
+    * Support Vector Machine (SVM) algoritma klasifikasi yang mencari hyperplane terbaik yang memisahkan data ke dalam dua kelas dengan margin maksimum. SVM efektif untuk data berdimensi tinggi dan dapat digunakan untuk klasifikasi linear maupun non-linear.[[6](https://sis.binus.ac.id/2022/02/14/support-vector-machine-algorithm/)]
+    * Naive Bayes adalah algoritma klasifikasi berbasis probabilitas yang menggunakan Teorema Bayes dengan asumsi independensi antar fitur. Meskipun asumsi ini jarang terpenuhi dalam praktik, algoritma ini sering memberikan hasil yang baik, terutama dalam klasifikasi teks.[[7](https://www.revou.co/kosakata/algoritma-naive-bayes)]
+    * Extra Trees Classifier adalah algoritma varian dari Random Forest yang memperkenalkan lebih banyak randomisasi dalam pemilihan fitur dan titik split saat membangun pohon keputusan. Hal ini dapat meningkatkan kecepatan dan mengurangi overfitting.[[8](https://ejurnal.itenas.ac.id/index.php/mindjournal/article/view/10899)]
 
 ## Data Understanding
 ### EDA - Deskripsi Variabel
 **Informasi Datasets**
-
 
 | Jenis | Keterangan |
 | ------ | ------ |
@@ -67,23 +64,22 @@ Data yang digunakan dalam pembuatan model merupakan data primer yang disediakan 
 
 Tabel 1. EDA Deskripsi Variabel
 
-Dilihat dari _Tabel 1. EDA Deskripsi Variabel_ dataset ini telah di *bersihkan* dan *normalisasi* terlebih dahulu oleh pembuat, sehingga mudah digunakan dan ramah bagi pemula. 
+Dilihat dari _Tabel 1. EDA Deskripsi Variabel_ kita mengetahui kalau ;
 - Dataset berupa CSV (Comma-Seperated Values).
-- Dataset memiliki 4001 sample dengan 9 fitur.
-- Dataset memiliki 7 fitur bertipe float64 dan 2 fitur bertipe object.
-- Terdapat 1 missing value dalam dataset.
+- Dataset memiliki 8000 sample dengan 8 fitur.
+- Dataset memiliki 7 fitur bertipe float64 dan 1 fitur bertipe object.
 ### Variable - variable pada dataset
-- `A_id` : Identifikasi unik untuk setiap buah.
 - `Size` : Ukuran buah.
 - `Weight` : Berat buah.
 - `Sweetness` : Tingkat kemanisan buah.
-- `Crunchiness` : Tekstur yang menunjukkan kerenyahan buah.
-- `Juiciness` : Tingkat kesegaran buah.
+- `Softness` : Tekstur yang menunjukkan kelembutan buah.
+- `HarvestTime` : Jumlah waktu yang telah berlalu sejak pemanenan buah
 - `Ripeness` : Tahap kematangan buah.
 - `Acidity` : Tingkat keasaman buah.
 - `Quality` : Kualitas buah secara keseluruhan, baik atau buruk.
 
-Dari ke 9 fitur dapat dilihat bahwa fitur `A_id` tidak mempengaruhi kualitas buah hingga akan di hapus.
+### EDA - Menangani Outlier
+
 
 ### EDA - Univariate Analysis
 
@@ -271,5 +267,14 @@ Dilihat dari _Tabel 3. Hasil Accuracy_ dan _Gambar 3. Visualisasi Accuracy Model
 
 [3] Rifqi, A., & Butar Butar, B. (2022). _Analisis Kualitas Pisang Berdasarkan Tingkat Kematangan Dengan Algoritma K-Means_. Indonesian Journal on Computer and Information Technology, 7(1), 1–9.[https://repository.bsi.ac.id/repo/files/440819/download/Jurnal_IJCIT_Ahmad-Rifqi.pdf](https://repository.bsi.ac.id/repo/files/440819/download/Jurnal_IJCIT_Ahmad-Rifqi.pdf)
 
+[4] Aziza, L. N., Astuti, R. Y., Maulana, B. A., & Hidayati, N. (2024). Penerapan Algoritma K-Nearest Neighbor untuk Klasifikasi Ketahanan Pangan di Provinsi Jawa Tengah. MALCOM: Indonesian Journal of Machine Learning and Computer Science, 4(2), 404–412.[https://doi.org/10.57152/malcom.v4i2.1201](https://doi.org/10.57152/malcom.v4i2.1201)
+
+[5] Algoritma. (2022, Maret 30). Cara Kerja Algoritma Random Forest. [https://algorit.ma/blog/cara-kerja-algoritma-random-forest-2022/](https://algorit.ma/blog/cara-kerja-algoritma-random-forest-2022/)
+
+[6] BINUS University. (2022, Februari 14). Support Vector Machine Algorithm.[https://sis.binus.ac.id/2022/02/14/support-vector-machine-algorithm/](https://sis.binus.ac.id/2022/02/14/support-vector-machine-algorithm/)
+
+[7] RevoU. (2025). Apa itu Algoritma Naive Bayes? Arti, Fungsi, Contoh, FAQs 2025. [https://www.revou.co/kosakata/algoritma-naive-bayes](https://www.revou.co/kosakata/algoritma-naive-bayes)
+
+[8] Itenas. (2024). Implementasi Extra Trees Classifier dengan Optimasi Grid Search.[https://ejurnal.itenas.ac.id/index.php/mindjournal/article/view/10899](https://ejurnal.itenas.ac.id/index.php/mindjournal/article/view/10899)
 
 _
